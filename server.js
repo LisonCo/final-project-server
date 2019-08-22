@@ -24,6 +24,7 @@ app.use(session({
 // mongostore (store session date in db)
 
 // extra settings for production enviroment
+
 // if (app.get('env') === 'production') {
 //   debugger
 //   app.set('trust proxy', 1) // trust first proxy
@@ -45,11 +46,11 @@ app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/order'));
 app.use('/', require('./routes/address'));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/build'));
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(__dirname + "/build/index.html");
 });
 
 module.exports = app;
