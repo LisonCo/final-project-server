@@ -45,6 +45,11 @@ app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/order'));
 app.use('/', require('./routes/address'));
 
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 module.exports = app;
 
 app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`));
