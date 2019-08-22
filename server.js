@@ -24,11 +24,11 @@ app.use(session({
 // mongostore (store session date in db)
 
 // extra settings for production enviroment
-if (app.get('env') === 'production') {
-  debugger
-  app.set('trust proxy', 1) // trust first proxy
-  session.cookie.secure = true // serve secure cookies
-}
+// if (app.get('env') === 'production') {
+//   debugger
+//   app.set('trust proxy', 1) // trust first proxy
+//   session.cookie.secure = true // serve secure cookies
+// }
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
