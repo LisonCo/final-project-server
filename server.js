@@ -12,12 +12,13 @@ app.use(cors({
 }));
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.REACT_APP_SESSION_SECRET,
+  name: "aSession",
   saveUninitialized: true,
   resave: true,
-  secure: false,
+  proxy: app.get('env') === 'production',
   cookie: {
-    secure: false
+    secure: app.get('env') === 'production'
   }
 }))
 
@@ -25,11 +26,9 @@ app.use(session({
 
 // extra settings for production enviroment
 
-// if (app.get('env') === 'production') {
-//   debugger
-//   app.set('trust proxy', 1) // trust first proxy
-//   session.cookie.secure = true // serve secure cookies
-// }
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
