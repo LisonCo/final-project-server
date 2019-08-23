@@ -3,7 +3,7 @@ const express = require("express");
 var cors = require("cors");
 var app = express();
 var bodyParser = require("body-parser");
-// require("dotenv").config();
+require("dotenv").config();
 var session = require("express-session");
 
 app.use(
